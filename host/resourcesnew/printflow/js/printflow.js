@@ -9,7 +9,12 @@ var averageslicetime=0;
 var signalstrength;
             
 function startpage(){
+        if (typeof Cookies.get('lastwifi') !== 'undefined'){
+                document.getElementById("wifi").src = Cookies.get('lastwifi');
+        }
         //handles page setup and the common things across all pages:
+        
+        
         
         // do the first updates
         wifiupdate();
@@ -66,6 +71,8 @@ function wifiupdate(){
         }
         else wifiurl="images/wifi-nc.png";
 
+        
+        Cookies.set('lastwifi',wifiurl);
 	document.getElementById("wifi").src = wifiurl;
 }
             

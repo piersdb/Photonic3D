@@ -10,7 +10,7 @@ export newpassword=photocentric
 # *** IMPORTANT NOTE *** declaring this as a variable in an open source project is totally insecure!
 # Ideally the password should be changed offline, and this repo should never be updated to match that.
 # but it's still better than sending out the hardware with the default pi user and password unchanged. Obviously.
-export repo="Photocentric3D/Photonic3D"
+export repo="Photocentric3D/Photonic3D-Dev"
 
 #require SU
 if [[ $UID != 0 ]]; then
@@ -151,7 +151,7 @@ if [ "$build" != "4kscreen" ]; then
 		echo xset s noblank >> /home/pi/.xsession
 	
 	
-		if [ $build == "4ktouch" ]; then
+		if [ "$build" == "4ktouch" ]; then
 			export target=4kscreen.local
 		else
 			export target=localhost
@@ -164,7 +164,7 @@ if [ "$build" != "4kscreen" ]; then
 		echo -e "\tif curl -fI http://${target}:${portno}/printflow/images/pixel.png" >> /home/pi/.xsession			
 		echo -e "\t\tthen" >> /home/pi/.xsession
 		echo -e "\t\t\t#uzbl -u /home/pi/holdingpage.html?target=http://${target}:${portno}/printflow -c /home/pi/uzbl.conf &;" >> /home/pi/.xsession
-		echo -e "\t\t\tkweb -KJ http://${target}:${portno}/printflow ;" >> /home/pi/.xsession		
+		echo -e "\t\t\tkweb -KEJ http://${target}:${portno}/printflow ;" >> /home/pi/.xsession		
 		echo -e "\tfi" >> /home/pi/.xsession
 
 		#echo exec matchbox-window-manager -use_titlebar no\; >> /home/pi/.xsession
